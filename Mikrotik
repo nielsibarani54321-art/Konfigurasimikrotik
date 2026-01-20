@@ -1,0 +1,8 @@
+1 hubungkan perangkat
+2 login via Winbox
+3 atur IP Address untuk interface
+4 konfigurasi DHCP Server untuk klien LAN
+5 atur Default Route/Gateway
+6 atur DNS Server
+7 terapkan NAT (Network Address Translation) agar bisa internet
+8 lalu uji koneksi
