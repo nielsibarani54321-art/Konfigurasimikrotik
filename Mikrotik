@@ -6,3 +6,25 @@
 6 atur DNS Server
 7 terapkan NAT (Network Address Translation) agar bisa internet
 8 lalu uji koneksi
+1. Login ke MikroTik via Winbox
+Hubungkan komputer ke port LAN MikroTik dengan kabel LAN.
+Buka aplikasi Winbox (aplikasi MikroTik, cari perangkat MikroTik di tab "Neighbors", lalu klik "Connect" (username: admin, password kosong). 
+2. Konfigurasi IP Address (WAN & LAN)
+WAN (Internet): Pilih menu IP > Addresses, klik +, masukkan IP Public dari ISP (jika statis) atau biarkan DHCP Client (jika dinamis) pada interface yang terhubung ke ISP (misal ether1).
+LAN (Lokal): Pilih IP > Addresses, klik +, masukkan IP untuk jaringan lokal (misal 192.168.1.1/24) pada interface LAN (misal ether2). 
+3. Konfigurasi DHCP Server
+Pilih IP > DHCP Server, lalu klik DHCP Setup.
+Pilih interface LAN (misal ether2), klik Next beberapa kali hingga selesai untuk mendistribusikan IP otomatis ke klien. 
+4. Konfigurasi DNS
+Pilih IP > DNS.
+Masukkan DNS server (contoh: 8.8.8.8, 8.8.4.4), lalu klik Apply dan OK. 
+5. Konfigurasi NAT (Network Address Translation)
+Pilih IP > Firewall > tab NAT, klik +.
+Pada tab General, Chain: srcnat, Out. Interface: interface WAN (ether1).
+Pada tab Action, Action: masquerade. Klik Apply dan OK untuk berbagi koneksi internet ke jaringan lokal. 
+6. Konfigurasi Wireless (WiFi) (Jika ada)
+Pilih Wireless > tab WiFi Interfaces, klik +.
+Atur SSID, Security Profile (WPA2 PSK), dan password WiFi, lalu Apply. 
+7. Reset Konfigurasi (Opsional)
+Jika ingin memulai dari awal, pilih System > Reset Configuration, centang No Default Configuration, lalu Reset Configuration. 
+Setelah langkah-langkah ini, coba hubungkan perangkat lain ke WiFi atau kabel LAN Anda, dan mereka seharusnya bisa mendapatkan IP otomatis dan mengakses internet. 
